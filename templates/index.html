@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banking App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      ul li {
+        background-color: #fff;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      ul li:hover {
+        background-color: #f1f1f1;
+      }
+      a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #007bff;
+        text-decoration: none;
+        padding: 8px 12px;
+        border: 1px solid #007bff;
+        border-radius: 4px;
+      }
+      a:hover {
+        background-color: #007bff;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Customer List</h1>
+    <a href="/create_customer">Create a new customer</a>
+    <a href="/transaction">Transaction</a>
+    <ul>
+      {% for customer in customers %}
+      <li>
+        {{ customer.name }} ({{ customer.email }}: {{ customer.balance }})
+      </li>
+      <td>
+        <a href="{{ url_for('transaction_history', customer_id=customer.id) }}"
+          >View History</a
+        >
+      </td>
+
+      {% endfor %}
+    </ul>
+  </body>
+</html>
